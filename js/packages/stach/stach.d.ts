@@ -24,6 +24,9 @@ declare namespace stach {
 
                     /** Package tables */
                     tables?: ({ [k: string]: factset.protobuf.stach.table.ITable }|null);
+
+                    /** Package lastUpdatedTime */
+                    lastUpdatedTime?: (string|null);
                 }
 
                 /** Represents a Package. */
@@ -43,6 +46,9 @@ declare namespace stach {
 
                     /** Package tables. */
                     public tables: { [k: string]: factset.protobuf.stach.table.ITable };
+
+                    /** Package lastUpdatedTime. */
+                    public lastUpdatedTime: string;
 
                     /**
                      * Creates a new Package instance using the specified properties.

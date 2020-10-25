@@ -132,6 +132,18 @@ public final class PackageProto {
 
     com.factset.protobuf.stach.table.TableProto.Table getTablesOrThrow(
         java.lang.String key);
+
+    /**
+     * <code>string last_updated_time = 4;</code>
+     * @return The lastUpdatedTime.
+     */
+    java.lang.String getLastUpdatedTime();
+    /**
+     * <code>string last_updated_time = 4;</code>
+     * @return The bytes for lastUpdatedTime.
+     */
+    com.google.protobuf.ByteString
+        getLastUpdatedTimeBytes();
   }
   /**
    * <pre>
@@ -152,6 +164,7 @@ public final class PackageProto {
     private Package() {
       version_ = "";
       primaryTableIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
+      lastUpdatedTime_ = "";
     }
 
     @java.lang.Override
@@ -211,6 +224,12 @@ public final class PackageProto {
                   TablesDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
               tables_.getMutableMap().put(
                   tables__.getKey(), tables__.getValue());
+              break;
+            }
+            case 34: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              lastUpdatedTime_ = s;
               break;
             }
             default: {
@@ -454,6 +473,44 @@ public final class PackageProto {
       return map.get(key);
     }
 
+    public static final int LAST_UPDATED_TIME_FIELD_NUMBER = 4;
+    private volatile java.lang.Object lastUpdatedTime_;
+    /**
+     * <code>string last_updated_time = 4;</code>
+     * @return The lastUpdatedTime.
+     */
+    @java.lang.Override
+    public java.lang.String getLastUpdatedTime() {
+      java.lang.Object ref = lastUpdatedTime_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        lastUpdatedTime_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string last_updated_time = 4;</code>
+     * @return The bytes for lastUpdatedTime.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getLastUpdatedTimeBytes() {
+      java.lang.Object ref = lastUpdatedTime_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        lastUpdatedTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -480,6 +537,9 @@ public final class PackageProto {
           internalGetTables(),
           TablesDefaultEntryHolder.defaultEntry,
           3);
+      if (!getLastUpdatedTimeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 4, lastUpdatedTime_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -510,6 +570,9 @@ public final class PackageProto {
         size += com.google.protobuf.CodedOutputStream
             .computeMessageSize(3, tables__);
       }
+      if (!getLastUpdatedTimeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, lastUpdatedTime_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -531,6 +594,8 @@ public final class PackageProto {
           .equals(other.getPrimaryTableIdsList())) return false;
       if (!internalGetTables().equals(
           other.internalGetTables())) return false;
+      if (!getLastUpdatedTime()
+          .equals(other.getLastUpdatedTime())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -552,6 +617,8 @@ public final class PackageProto {
         hash = (37 * hash) + TABLES_FIELD_NUMBER;
         hash = (53 * hash) + internalGetTables().hashCode();
       }
+      hash = (37 * hash) + LAST_UPDATED_TIME_FIELD_NUMBER;
+      hash = (53 * hash) + getLastUpdatedTime().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -716,6 +783,8 @@ public final class PackageProto {
         primaryTableIds_ = com.google.protobuf.LazyStringArrayList.EMPTY;
         bitField0_ = (bitField0_ & ~0x00000001);
         internalGetMutableTables().clear();
+        lastUpdatedTime_ = "";
+
         return this;
       }
 
@@ -751,6 +820,7 @@ public final class PackageProto {
         result.primaryTableIds_ = primaryTableIds_;
         result.tables_ = internalGetTables();
         result.tables_.makeImmutable();
+        result.lastUpdatedTime_ = lastUpdatedTime_;
         onBuilt();
         return result;
       }
@@ -815,6 +885,10 @@ public final class PackageProto {
         }
         internalGetMutableTables().mergeFrom(
             other.internalGetTables());
+        if (!other.getLastUpdatedTime().isEmpty()) {
+          lastUpdatedTime_ = other.lastUpdatedTime_;
+          onChanged();
+        }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
         return this;
@@ -1242,6 +1316,82 @@ public final class PackageProto {
             .putAll(values);
         return this;
       }
+
+      private java.lang.Object lastUpdatedTime_ = "";
+      /**
+       * <code>string last_updated_time = 4;</code>
+       * @return The lastUpdatedTime.
+       */
+      public java.lang.String getLastUpdatedTime() {
+        java.lang.Object ref = lastUpdatedTime_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          lastUpdatedTime_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string last_updated_time = 4;</code>
+       * @return The bytes for lastUpdatedTime.
+       */
+      public com.google.protobuf.ByteString
+          getLastUpdatedTimeBytes() {
+        java.lang.Object ref = lastUpdatedTime_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          lastUpdatedTime_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string last_updated_time = 4;</code>
+       * @param value The lastUpdatedTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastUpdatedTime(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        lastUpdatedTime_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string last_updated_time = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearLastUpdatedTime() {
+        
+        lastUpdatedTime_ = getDefaultInstance().getLastUpdatedTime();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string last_updated_time = 4;</code>
+       * @param value The bytes for lastUpdatedTime to set.
+       * @return This builder for chaining.
+       */
+      public Builder setLastUpdatedTimeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        lastUpdatedTime_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1316,15 +1466,16 @@ public final class PackageProto {
     java.lang.String[] descriptorData = {
       "\n fds/protobuf/stach/Package.proto\022\026fact" +
       "set.protobuf.stach\032$fds/protobuf/stach/t" +
-      "able/Table.proto\"\306\001\n\007Package\022\017\n\007version\030" +
+      "able/Table.proto\"\341\001\n\007Package\022\017\n\007version\030" +
       "\001 \001(\t\022\031\n\021primary_table_ids\030\002 \003(\t\022;\n\006tabl" +
       "es\030\003 \003(\0132+.factset.protobuf.stach.Packag" +
-      "e.TablesEntry\032R\n\013TablesEntry\022\013\n\003key\030\001 \001(" +
-      "\t\0222\n\005value\030\002 \001(\0132#.factset.protobuf.stac" +
-      "h.table.Table:\0028\001B|\n\032com.factset.protobu" +
-      "f.stachB\014PackageProtoZ7github.com/factse" +
-      "t/stachschema/go/v2/fds/protobuf/stach\252\002" +
-      "\026FactSet.Protobuf.Stachb\006proto3"
+      "e.TablesEntry\022\031\n\021last_updated_time\030\004 \001(\t" +
+      "\032R\n\013TablesEntry\022\013\n\003key\030\001 \001(\t\0222\n\005value\030\002 " +
+      "\001(\0132#.factset.protobuf.stach.table.Table" +
+      ":\0028\001B|\n\032com.factset.protobuf.stachB\014Pack" +
+      "ageProtoZ7github.com/factset/stachschema" +
+      "/go/v2/fds/protobuf/stach\252\002\026FactSet.Prot" +
+      "obuf.Stachb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1336,7 +1487,7 @@ public final class PackageProto {
     internal_static_factset_protobuf_stach_Package_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_factset_protobuf_stach_Package_descriptor,
-        new java.lang.String[] { "Version", "PrimaryTableIds", "Tables", });
+        new java.lang.String[] { "Version", "PrimaryTableIds", "Tables", "LastUpdatedTime", });
     internal_static_factset_protobuf_stach_Package_TablesEntry_descriptor =
       internal_static_factset_protobuf_stach_Package_descriptor.getNestedTypes().get(0);
     internal_static_factset_protobuf_stach_Package_TablesEntry_fieldAccessorTable = new
