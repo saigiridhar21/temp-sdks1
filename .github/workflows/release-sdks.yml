@@ -43,7 +43,8 @@ jobs:
         dotnet-version: 2.2
     
     - name: Build and create the package
-      run: dotnet build --configuration Release ${{ env.DOTNET_SDK_LOCATION }}/Schema.csproj
+      #run: dotnet build --configuration Release ${{ env.DOTNET_SDK_LOCATION }}/Schema.csproj
+      run: nuget pack -Build ${{ env.DOTNET_SDK_LOCATION }}/Schema.csproj
 
     - name: Publish the package to Nuget
       run: |
