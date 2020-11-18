@@ -50,7 +50,7 @@ jobs:
 
     - name: Publish the package to Nuget
       run: |
-        nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg
+        nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg -Source https://api.nuget.org/v3/index.json
   
   python:
     runs-on: ubuntu-latest
