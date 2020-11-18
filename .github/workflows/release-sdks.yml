@@ -41,16 +41,16 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2
-        source-url: https://api.nuget.org/v3/index.json
-      env:
-        NUGET_AUTH_TOKEN: ${{ env.NUGET_API_KEY }}
+        #source-url: https://api.nuget.org/v3/index.json
+      #env:
+        #NUGET_AUTH_TOKEN: ${{ env.NUGET_API_KEY }}
     
     - name: Build and create the package
       run: dotnet build --configuration Release ${{ env.DOTNET_SDK_LOCATION }}/Schema.csproj
 
     - name: Publish the package to Nuget
       run: |
-        dotnet nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg
+        nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg
   
   python:
     runs-on: ubuntu-latest
