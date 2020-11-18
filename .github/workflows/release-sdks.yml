@@ -31,11 +31,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    #- name: Setup Nuget
-      #uses: nuget/setup-nuget@v1.0.2
-      #with:
-        #nuget-api-key: ${{ env.NUGET_API_KEY }}
-        #nuget-version: '5.x'
+    - name: Setup Nuget
+      uses: nuget/setup-nuget@v1.0.2
+      with:
+        nuget-api-key: ${{ env.NUGET_API_KEY }}
+        nuget-version: '5.x'
 
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1.7.2
@@ -50,7 +50,7 @@ jobs:
 
     - name: Publish the package to Nuget
       run: |
-        # dotnet nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg
+        dotnet nuget push ${{ env.DOTNET_SDK_LOCATION }}/bin/Release/*.nupkg
   
   python:
     runs-on: ubuntu-latest
@@ -77,7 +77,7 @@ jobs:
       run: |
         cd ${{ env.PYTHON_SDK_LOCATION }}
         python setup.py sdist bdist_wheel
-        # twine upload dist/* --verbose
+        twine upload dist/* --verbose
   
   java:
     runs-on: ubuntu-latest
@@ -99,9 +99,9 @@ jobs:
     
     - name: Build
       run: |
-        # mvn -B package --file ${{ env.JAVA_SDK_LOCATION }}/pom.xml
+        mvn -B package --file ${{ env.JAVA_SDK_LOCATION }}/pom.xml
       
     - name: Publish to Apache Maven Central
       run: |
         cd ${{ env.JAVA_SDK_LOCATION }}
-        # mvn -Psign-artifacts verify deploy
+        mvn -Psign-artifacts verify deploy
