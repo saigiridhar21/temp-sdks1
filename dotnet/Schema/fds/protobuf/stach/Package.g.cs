@@ -26,18 +26,19 @@ namespace FactSet.Protobuf.Stach {
           string.Concat(
             "CiBmZHMvcHJvdG9idWYvc3RhY2gvUGFja2FnZS5wcm90bxIWZmFjdHNldC5w",
             "cm90b2J1Zi5zdGFjaBokZmRzL3Byb3RvYnVmL3N0YWNoL3RhYmxlL1RhYmxl",
-            "LnByb3RvIsYBCgdQYWNrYWdlEg8KB3ZlcnNpb24YASABKAkSGQoRcHJpbWFy",
+            "LnByb3RvIuEBCgdQYWNrYWdlEg8KB3ZlcnNpb24YASABKAkSGQoRcHJpbWFy",
             "eV90YWJsZV9pZHMYAiADKAkSOwoGdGFibGVzGAMgAygLMisuZmFjdHNldC5w",
-            "cm90b2J1Zi5zdGFjaC5QYWNrYWdlLlRhYmxlc0VudHJ5GlIKC1RhYmxlc0Vu",
-            "dHJ5EgsKA2tleRgBIAEoCRIyCgV2YWx1ZRgCIAEoCzIjLmZhY3RzZXQucHJv",
-            "dG9idWYuc3RhY2gudGFibGUuVGFibGU6AjgBQnwKGmNvbS5mYWN0c2V0LnBy",
-            "b3RvYnVmLnN0YWNoQgxQYWNrYWdlUHJvdG9aN2dpdGh1Yi5jb20vZmFjdHNl",
-            "dC9zdGFjaHNjaGVtYS9nby92Mi9mZHMvcHJvdG9idWYvc3RhY2iqAhZGYWN0",
-            "U2V0LlByb3RvYnVmLlN0YWNoYgZwcm90bzM="));
+            "cm90b2J1Zi5zdGFjaC5QYWNrYWdlLlRhYmxlc0VudHJ5EhkKEWxhc3RfdXBk",
+            "YXRlZF90aW1lGAQgASgJGlIKC1RhYmxlc0VudHJ5EgsKA2tleRgBIAEoCRIy",
+            "CgV2YWx1ZRgCIAEoCzIjLmZhY3RzZXQucHJvdG9idWYuc3RhY2gudGFibGUu",
+            "VGFibGU6AjgBQnwKGmNvbS5mYWN0c2V0LnByb3RvYnVmLnN0YWNoQgxQYWNr",
+            "YWdlUHJvdG9aN2dpdGh1Yi5jb20vZmFjdHNldC9zdGFjaHNjaGVtYS9nby92",
+            "Mi9mZHMvcHJvdG9idWYvc3RhY2iqAhZGYWN0U2V0LlByb3RvYnVmLlN0YWNo",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::FactSet.Protobuf.Stach.Table.TableReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::FactSet.Protobuf.Stach.Package), global::FactSet.Protobuf.Stach.Package.Parser, new[]{ "Version", "PrimaryTableIds", "Tables" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::FactSet.Protobuf.Stach.Package), global::FactSet.Protobuf.Stach.Package.Parser, new[]{ "Version", "PrimaryTableIds", "Tables", "LastUpdatedTime" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -75,6 +76,7 @@ namespace FactSet.Protobuf.Stach {
       version_ = other.version_;
       primaryTableIds_ = other.primaryTableIds_.Clone();
       tables_ = other.tables_.Clone();
+      lastUpdatedTime_ = other.lastUpdatedTime_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -123,6 +125,17 @@ namespace FactSet.Protobuf.Stach {
       get { return tables_; }
     }
 
+    /// <summary>Field number for the "last_updated_time" field.</summary>
+    public const int LastUpdatedTimeFieldNumber = 4;
+    private string lastUpdatedTime_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    public string LastUpdatedTime {
+      get { return lastUpdatedTime_; }
+      set {
+        lastUpdatedTime_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override bool Equals(object other) {
       return Equals(other as Package);
@@ -139,6 +152,7 @@ namespace FactSet.Protobuf.Stach {
       if (Version != other.Version) return false;
       if(!primaryTableIds_.Equals(other.primaryTableIds_)) return false;
       if (!Tables.Equals(other.Tables)) return false;
+      if (LastUpdatedTime != other.LastUpdatedTime) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -148,6 +162,7 @@ namespace FactSet.Protobuf.Stach {
       if (Version.Length != 0) hash ^= Version.GetHashCode();
       hash ^= primaryTableIds_.GetHashCode();
       hash ^= Tables.GetHashCode();
+      if (LastUpdatedTime.Length != 0) hash ^= LastUpdatedTime.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -167,6 +182,10 @@ namespace FactSet.Protobuf.Stach {
       }
       primaryTableIds_.WriteTo(output, _repeated_primaryTableIds_codec);
       tables_.WriteTo(output, _map_tables_codec);
+      if (LastUpdatedTime.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(LastUpdatedTime);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -180,6 +199,9 @@ namespace FactSet.Protobuf.Stach {
       }
       size += primaryTableIds_.CalculateSize(_repeated_primaryTableIds_codec);
       size += tables_.CalculateSize(_map_tables_codec);
+      if (LastUpdatedTime.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(LastUpdatedTime);
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -196,6 +218,9 @@ namespace FactSet.Protobuf.Stach {
       }
       primaryTableIds_.Add(other.primaryTableIds_);
       tables_.Add(other.tables_);
+      if (other.LastUpdatedTime.Length != 0) {
+        LastUpdatedTime = other.LastUpdatedTime;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -217,6 +242,10 @@ namespace FactSet.Protobuf.Stach {
           }
           case 26: {
             tables_.AddEntriesFrom(input, _map_tables_codec);
+            break;
+          }
+          case 34: {
+            LastUpdatedTime = input.ReadString();
             break;
           }
         }

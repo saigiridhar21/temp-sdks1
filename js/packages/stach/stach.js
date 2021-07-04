@@ -45,6 +45,7 @@ $root.factset = (function() {
                  * @property {string|null} [version] Package version
                  * @property {Array.<string>|null} [primaryTableIds] Package primaryTableIds
                  * @property {Object.<string,factset.protobuf.stach.table.ITable>|null} [tables] Package tables
+                 * @property {string|null} [lastUpdatedTime] Package lastUpdatedTime
                  */
 
                 /**
@@ -89,6 +90,14 @@ $root.factset = (function() {
                 Package.prototype.tables = $util.emptyObject;
 
                 /**
+                 * Package lastUpdatedTime.
+                 * @member {string} lastUpdatedTime
+                 * @memberof factset.protobuf.stach.Package
+                 * @instance
+                 */
+                Package.prototype.lastUpdatedTime = "";
+
+                /**
                  * Creates a new Package instance using the specified properties.
                  * @function create
                  * @memberof factset.protobuf.stach.Package
@@ -122,6 +131,8 @@ $root.factset = (function() {
                             writer.uint32(/* id 3, wireType 2 =*/26).fork().uint32(/* id 1, wireType 2 =*/10).string(keys[i]);
                             $root.factset.protobuf.stach.table.Table.encode(message.tables[keys[i]], writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim().ldelim();
                         }
+                    if (message.lastUpdatedTime != null && Object.hasOwnProperty.call(message, "lastUpdatedTime"))
+                        writer.uint32(/* id 4, wireType 2 =*/34).string(message.lastUpdatedTime);
                     return writer;
                 };
 
@@ -186,6 +197,9 @@ $root.factset = (function() {
                             }
                             message.tables[key] = value;
                             break;
+                        case 4:
+                            message.lastUpdatedTime = reader.string();
+                            break;
                         default:
                             reader.skipType(tag & 7);
                             break;
@@ -241,6 +255,9 @@ $root.factset = (function() {
                                 return "tables." + error;
                         }
                     }
+                    if (message.lastUpdatedTime != null && message.hasOwnProperty("lastUpdatedTime"))
+                        if (!$util.isString(message.lastUpdatedTime))
+                            return "lastUpdatedTime: string expected";
                     return null;
                 };
 
@@ -275,6 +292,8 @@ $root.factset = (function() {
                             message.tables[keys[i]] = $root.factset.protobuf.stach.table.Table.fromObject(object.tables[keys[i]]);
                         }
                     }
+                    if (object.lastUpdatedTime != null)
+                        message.lastUpdatedTime = String(object.lastUpdatedTime);
                     return message;
                 };
 
@@ -295,8 +314,10 @@ $root.factset = (function() {
                         object.primaryTableIds = [];
                     if (options.objects || options.defaults)
                         object.tables = {};
-                    if (options.defaults)
+                    if (options.defaults) {
                         object.version = "";
+                        object.lastUpdatedTime = "";
+                    }
                     if (message.version != null && message.hasOwnProperty("version"))
                         object.version = message.version;
                     if (message.primaryTableIds && message.primaryTableIds.length) {
@@ -310,6 +331,8 @@ $root.factset = (function() {
                         for (var j = 0; j < keys2.length; ++j)
                             object.tables[keys2[j]] = $root.factset.protobuf.stach.table.Table.toObject(message.tables[keys2[j]], options);
                     }
+                    if (message.lastUpdatedTime != null && message.hasOwnProperty("lastUpdatedTime"))
+                        object.lastUpdatedTime = message.lastUpdatedTime;
                     return object;
                 };
 
